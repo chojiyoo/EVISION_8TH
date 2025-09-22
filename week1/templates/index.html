@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>검색 & 방명록</title> <!--브라우저 제목 -->
+</head>
+<body>
+    <h1>검색 페이지</h1> <!--검색 페이지-->
+    <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="검색어 입력">
+        <button type="submit">검색</button>
+    </form>
+
+    <h2>방명록 작성</h2> <!--방명록 작성 영역-->
+    <form action="/write" method="POST">
+        <input type="text" name="name" placeholder="이름"><br><br> <!--작성자 이름 입력-->
+        <textarea name="message" placeholder="메시지를 입력하세요"></textarea><br><br> <!--메시지 입력-->
+        <button type="submit">작성</button> <!--작성 후 저장 버튼-->
+    </form>
+
+    <h2>방명록 목록</h2> <!--방명록 출력 영역-->
+        <ul>
+            {% for entry in entries %} <!--entires라는 리스트를 반복하면서 한줄씩 방명록 출력-->
+                <li><b>{{ entry.name }}</b>: {{ entry.message }}</li>
+             {% endfor %}
+        </ul>
+
+</body>
+</html>
